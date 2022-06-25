@@ -14,6 +14,7 @@ import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 import com.goncharov.evgeny.obstacleavoid.util.GdxUtils
+import com.goncharov.evgeny.obstacleavoid.util.debug.DebugUiCameraController
 import com.goncharov.evgeny.obstacleavoid.util.debug.DebugUiInputController
 
 abstract class BaseStageScreen(
@@ -43,6 +44,7 @@ abstract class BaseStageScreen(
     }
 
     override fun render(delta: Float) {
+        DebugUiCameraController.update(camera)
         GdxUtils.clearScreen()
         stage.act()
         stage.draw()

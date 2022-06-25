@@ -6,12 +6,12 @@ import com.goncharov.evgeny.obstacleavoid.common.BaseInputProcessor
 
 class DebugUiInputController(private val stage: Stage) : BaseInputProcessor() {
 
-    override fun keyUp(keycode: Int): Boolean {
+    override fun keyDown(keycode: Int): Boolean {
         when {
-            keycode == Input.Keys.D && stage.isDebugAll.not() -> {
+            keycode == Input.Keys.C && stage.isDebugAll.not() -> {
                 stage.isDebugAll = true
             }
-            keycode == Input.Keys.D && stage.isDebugAll -> {
+            keycode == Input.Keys.C && stage.isDebugAll -> {
                 stage.isDebugAll = false
             }
         }
