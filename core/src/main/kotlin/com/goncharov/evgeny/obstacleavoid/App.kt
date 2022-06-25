@@ -8,8 +8,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
+import com.goncharov.evgeny.obstacleavoid.screens.game.GameScreen
 import com.goncharov.evgeny.obstacleavoid.screens.loading.LoadingScreen
+import com.goncharov.evgeny.obstacleavoid.screens.menu.HighScoreScreen
 import com.goncharov.evgeny.obstacleavoid.screens.menu.MenuScreen
+import com.goncharov.evgeny.obstacleavoid.screens.menu.OptionsScreen
 import com.goncharov.evgeny.obstacleavoid.util.FormatUtils
 
 class App : Game(), Navigation {
@@ -49,6 +52,15 @@ class App : Game(), Navigation {
             )
             KeyNavigation.MenuKey -> setScreen(
                 MenuScreen(this, assetManager, batch)
+            )
+            KeyNavigation.GameKey -> setScreen(
+                GameScreen()
+            )
+            KeyNavigation.HighScoreKey -> setScreen(
+                HighScoreScreen(this, assetManager, batch)
+            )
+            KeyNavigation.OptionsKey -> setScreen(
+                OptionsScreen(this, assetManager, batch)
             )
         }
     }

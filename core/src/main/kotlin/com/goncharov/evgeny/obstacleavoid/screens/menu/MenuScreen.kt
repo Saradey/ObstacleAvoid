@@ -12,6 +12,7 @@ import com.goncharov.evgeny.obstacleavoid.common.addListenerKtx
 import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors
 import com.goncharov.evgeny.obstacleavoid.consts.BACKGROUND
 import com.goncharov.evgeny.obstacleavoid.consts.PANEL
+import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 
 class MenuScreen(
@@ -55,17 +56,17 @@ class MenuScreen(
 
     private fun play() {
         debug("click play button")
-//        navigation.navigate()
+        navigation.navigate(KeyNavigation.GameKey)
     }
 
     private fun showHighScore() {
         debug("click highScore button")
-//        navigation.navigate()
+        navigation.navigate(KeyNavigation.HighScoreKey)
     }
 
     private fun showOptions() {
         debug("click options button")
-//        navigation.navigate()
+        navigation.navigate(KeyNavigation.OptionsKey)
     }
 
     private fun quit() {
