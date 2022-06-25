@@ -1,18 +1,25 @@
 package com.goncharov.evgeny.obstacleavoid.common
 
 import com.badlogic.gdx.Screen
+import com.goncharov.evgeny.obstacleavoid.util.LoggerUtils
 
 abstract class BaseScreen : Screen {
 
-    override fun show() {}
+    init {
+        LoggerUtils.init(javaClass.simpleName)
+    }
 
-    override fun resize(width: Int, height: Int) {}
+    override fun show() = Unit
 
-    override fun pause() {}
+    override fun render(delta: Float) = Unit
 
-    override fun resume() {}
+    override fun resize(width: Int, height: Int) = Unit
 
-    override fun hide() {}
+    override fun pause() = Unit
 
-    override fun dispose() {}
+    override fun resume() = Unit
+
+    override fun hide() = Unit
+
+    override fun dispose() = Unit
 }
