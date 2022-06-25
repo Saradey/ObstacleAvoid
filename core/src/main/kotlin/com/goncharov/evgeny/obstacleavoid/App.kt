@@ -10,7 +10,7 @@ import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 import com.goncharov.evgeny.obstacleavoid.screens.loading.LoadingScreen
 import com.goncharov.evgeny.obstacleavoid.screens.menu.MenuScreen
-import com.goncharov.evgeny.obstacleavoid.util.LoggerUtils.debug
+import com.goncharov.evgeny.obstacleavoid.util.FormatUtils
 
 class App : Game(), Navigation {
 
@@ -26,13 +26,20 @@ class App : Game(), Navigation {
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
-        debug("start application")
+        Gdx.app.debug(
+            "App",
+            "${FormatUtils.dateFormat.format(FormatUtils.calendar.time)} start application"
+        )
         navigate(KeyNavigation.LoadingKey)
     }
 
     override fun dispose() {
         batch.dispose()
         assetManager.dispose()
+        Gdx.app.debug(
+            "App",
+            "${FormatUtils.dateFormat.format(FormatUtils.calendar.time)} dispose"
+        )
     }
 
     override fun navigate(key: KeyNavigation) {
@@ -41,7 +48,7 @@ class App : Game(), Navigation {
                 LoadingScreen(assetManager, debugRender, this)
             )
             KeyNavigation.MenuKey -> setScreen(
-                MenuScreen()
+                MenuScreen(this, assetManager, batch)
             )
         }
     }

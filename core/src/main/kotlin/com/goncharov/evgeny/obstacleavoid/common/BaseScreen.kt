@@ -1,14 +1,12 @@
 package com.goncharov.evgeny.obstacleavoid.common
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
-import com.goncharov.evgeny.obstacleavoid.util.LoggerUtils
-import com.goncharov.evgeny.obstacleavoid.util.LoggerUtils.debug
+import com.goncharov.evgeny.obstacleavoid.util.FormatUtils
 
 abstract class BaseScreen : Screen {
 
-    init {
-        LoggerUtils.init(javaClass.simpleName)
-    }
+    private val logTag = javaClass.simpleName
 
     override fun show() = Unit
 
@@ -27,4 +25,11 @@ abstract class BaseScreen : Screen {
     override fun hide() = Unit
 
     override fun dispose() = Unit
+
+    protected fun debug(message: String) {
+        Gdx.app.debug(
+            logTag,
+            "${FormatUtils.dateFormat.format(FormatUtils.calendar.time)} $message"
+        )
+    }
 }

@@ -11,7 +11,6 @@ import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 import com.goncharov.evgeny.obstacleavoid.util.GdxUtils
-import com.goncharov.evgeny.obstacleavoid.util.LoggerUtils.debug
 
 class LoadingScreen(
     private val assetManager: AssetManager,
