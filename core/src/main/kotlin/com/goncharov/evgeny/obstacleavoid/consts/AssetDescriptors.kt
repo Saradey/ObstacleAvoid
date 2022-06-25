@@ -11,4 +11,5 @@ object AssetDescriptors {
     val GAME_PLAY_DESCRIPTOR = AssetDescriptor(GAME_PLAY, TextureAtlas::class.java)
     val UI_SKIN_DESCRIPTOR = AssetDescriptor(UI_SKIN, Skin::class.java)
     val HIT_SOUND_DESCRIPTOR = AssetDescriptor(SOUND_HIT, Sound::class.java)
+    val FPS_FONT_DESCRIPTOR = AssetDescriptor(UI_FPS_FONT, BitmapFont::class.java)
 }
