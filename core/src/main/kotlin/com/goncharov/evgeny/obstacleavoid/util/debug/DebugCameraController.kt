@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 
-object DebugUiCameraController {
+object DebugCameraController {
 
     fun update(camera: OrthographicCamera) {
         when {

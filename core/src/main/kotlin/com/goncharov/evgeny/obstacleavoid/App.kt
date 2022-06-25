@@ -45,6 +45,11 @@ class App : Game(), Navigation {
         DebugDrawingFps.drawFpsMonitor(batch, assetManager[AssetDescriptors.FPS_FONT_DESCRIPTOR])
     }
 
+    override fun resize(width: Int, height: Int) {
+        DebugDrawingFps.resize(width, height)
+        super.resize(width, height)
+    }
+
     override fun dispose() {
         batch.dispose()
         assetManager.dispose()

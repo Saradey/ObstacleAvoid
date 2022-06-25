@@ -4,10 +4,13 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.utils.viewport.FitViewport
 import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 
 object DebugDrawingFps {
+
+    private val viewPort = FitViewport(UI_WIDTH, UI_HEIGHT)
 
     fun drawFpsMonitor(batch: SpriteBatch, fpsFont: BitmapFont) {
         when {
@@ -21,6 +24,7 @@ object DebugDrawingFps {
                 fpsFont.color = Color.GREEN
             }
         }
+        batch.projectionMatrix = viewPort.camera.combined
         batch.begin()
         fpsFont.draw(
             batch,
@@ -29,6 +33,10 @@ object DebugDrawingFps {
             UI_HEIGHT - 20f
         )
         batch.end()
+    }
+
+    fun resize(width: Int, height: Int) {
+        viewPort.update(width, height, true)
     }
 
     private const val FPS = "FPS:%d"
