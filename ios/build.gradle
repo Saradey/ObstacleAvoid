@@ -3,7 +3,7 @@ apply plugin: 'robovm'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 ext {
-	mainClassName = "com.goncharov.evgeny.obstacleavoid.ios.App"
+	mainClassName = "com.goncharov.evgeny.obstacleavoid.ios.IOSApp"
 }
 
 launchIPhoneSimulator.dependsOn build
