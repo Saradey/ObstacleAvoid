@@ -64,10 +64,12 @@ class OptionsScreen(
     }
 
     private fun back() {
+        debug("back")
         navigation.navigate(KeyNavigation.MenuKey)
     }
 
     private fun difficultyChanged() {
+        debug("select difficulty")
         group?.checked ?: return
         val checkBoxTag = group?.checked?.name.orEmpty()
         GameManager.updateDifficulty(DifficultyLevel.valueOf(checkBoxTag))
