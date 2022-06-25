@@ -76,7 +76,6 @@ class LoadingScreen(
 
     override fun dispose() {
         debug("dispose")
-        shapeRenderer.dispose()
     }
 
     companion object {

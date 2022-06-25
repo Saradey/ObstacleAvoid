@@ -57,6 +57,7 @@ class App : Game(), Navigation {
             "App",
             "${FormatUtils.dateFormat.format(FormatUtils.calendar.time)} dispose"
         )
+        debugRender.dispose()
     }
 
     override fun navigate(key: KeyNavigation) {
