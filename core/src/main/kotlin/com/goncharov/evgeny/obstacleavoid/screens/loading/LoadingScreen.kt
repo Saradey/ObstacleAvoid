@@ -8,7 +8,9 @@ import com.goncharov.evgeny.obstacleavoid.common.BaseScreen
 import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors
 import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
+import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
+import com.goncharov.evgeny.obstacleavoid.util.GdxUtils
 import com.goncharov.evgeny.obstacleavoid.util.LoggerUtils.debug
 
 class LoadingScreen(
@@ -32,7 +34,35 @@ class LoadingScreen(
     }
 
     override fun render(delta: Float) {
+        update(delta)
+        GdxUtils.clearScreen()
+        viewport.apply()
+        shapeRenderer.projectionMatrix = camera.combined
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
+        draw()
+        shapeRenderer.end()
+        if (changeScreen) {
+            navigation.navigate(KeyNavigation.MenuKey)
+        }
+    }
 
+    private fun update(delta: Float) {
+        progress = assetManager.progress
+        if (assetManager.update()) {
+            waitTime -= delta
+            if (waitTime <= 0) {
+                changeScreen = true
+            }
+        }
+    }
+
+    private fun draw() {
+        shapeRenderer.rect(
+            PROGRESS_BAR_X,
+            PROGRESS_BAR_Y,
+            progress * PROGRESS_BAR_WIDTH,
+            PROGRESS_BAR_HEIGHT
+        )
     }
 
     override fun resize(width: Int, height: Int) {
@@ -53,5 +83,7 @@ class LoadingScreen(
     companion object {
         private const val PROGRESS_BAR_WIDTH = UI_WIDTH / 2f
         private const val PROGRESS_BAR_HEIGHT = 60f
+        private const val PROGRESS_BAR_X = UI_WIDTH / 2f
+        private const val PROGRESS_BAR_Y = UI_HEIGHT / 2f
     }
 }

@@ -37,7 +37,9 @@ class App : Game(), Navigation {
 
     override fun navigate(key: KeyNavigation) {
         when (key) {
-            KeyNavigation.LoadingKey -> setScreen(LoadingScreen(assetManager, debugRender))
+            KeyNavigation.LoadingKey -> setScreen(
+                LoadingScreen(assetManager, debugRender, this)
+            )
             KeyNavigation.MenuKey -> setScreen(MenuScreen())
         }
     }
