@@ -1,5 +1,6 @@
 package com.goncharov.evgeny.obstacleavoid.screens.menu
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.scenes.scene2d.Actor
@@ -10,6 +11,7 @@ import com.goncharov.evgeny.obstacleavoid.common.BaseStageScreen
 import com.goncharov.evgeny.obstacleavoid.common.addListenerKtx
 import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors
 import com.goncharov.evgeny.obstacleavoid.consts.BACKGROUND
+import com.goncharov.evgeny.obstacleavoid.consts.PANEL
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 
 class MenuScreen(
@@ -24,14 +26,50 @@ class MenuScreen(
         table.background = TextureRegionDrawable(gamePlayAtlas.findRegion(BACKGROUND))
 
         val playButton = TextButton("PLAY", uiSkin)
-        playButton.addListenerKtx {
-            play()
-        }
+        playButton.addListenerKtx(::play)
 
+        val highScoreButton = TextButton("HIGHSCORE", uiSkin)
+        highScoreButton.addListenerKtx(::showHighScore)
+
+        val optionsButton = TextButton("OPTIONS", uiSkin)
+        optionsButton.addListenerKtx(::showOptions)
+
+        val quitButton = TextButton("QUIT", uiSkin)
+        quitButton.addListenerKtx(::quit)
+
+        val buttonTable = Table(uiSkin)
+        buttonTable.defaults().pad(20f)
+        buttonTable.setBackground(PANEL)
+        buttonTable.add(playButton).row()
+        buttonTable.add(highScoreButton).row()
+        buttonTable.add(optionsButton).row()
+        buttonTable.add(quitButton)
+        buttonTable.center()
+
+        table.add(buttonTable)
+        table.center()
+        table.setFillParent(true)
+        table.pack()
         return table
     }
 
     private fun play() {
+        debug("click play button")
+//        navigation.navigate()
+    }
 
+    private fun showHighScore() {
+        debug("click highScore button")
+//        navigation.navigate()
+    }
+
+    private fun showOptions() {
+        debug("click options button")
+//        navigation.navigate()
+    }
+
+    private fun quit() {
+        debug("click quit button")
+        Gdx.app.exit()
     }
 }
