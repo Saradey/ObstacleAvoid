@@ -4,14 +4,9 @@ import com.badlogic.gdx.Application
 import com.badlogic.gdx.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
-import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.utils.viewport.FitViewport
 import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors
-import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
-import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 import com.goncharov.evgeny.obstacleavoid.screens.game.GameScreen
@@ -43,11 +38,6 @@ class App : Game(), Navigation {
             "${FormatUtils.dateFormat.format(FormatUtils.calendar.time)} start application"
         )
         navigate(KeyNavigation.LoadingKey)
-    }
-
-    override fun resize(width: Int, height: Int) {
-        DebugDrawingFps.resize(width, height)
-        super.resize(width, height)
     }
 
     override fun render() {

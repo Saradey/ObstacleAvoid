@@ -8,7 +8,7 @@ import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 
 object DebugUiCameraController {
 
-    fun update(camera: OrthographicCamera, uiCamera: Boolean = true) {
+    fun update(camera: OrthographicCamera) {
         when {
             Gdx.input.isKeyPressed(Input.Keys.LEFT) -> camera.position.x -= TRANSFORM_POSITION_SPEED
             Gdx.input.isKeyPressed(Input.Keys.RIGHT) -> camera.position.x += TRANSFORM_POSITION_SPEED

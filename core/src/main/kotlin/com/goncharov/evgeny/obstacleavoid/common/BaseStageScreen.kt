@@ -58,7 +58,6 @@ abstract class BaseStageScreen(
     override fun dispose() {
         debug("dispose")
         stage.dispose()
-        batch.dispose()
     }
 
     protected abstract fun initUi(): Actor
