@@ -40,7 +40,9 @@ class App : Game(), Navigation {
             KeyNavigation.LoadingKey -> setScreen(
                 LoadingScreen(assetManager, debugRender, this)
             )
-            KeyNavigation.MenuKey -> setScreen(MenuScreen())
+            KeyNavigation.MenuKey -> setScreen(
+                MenuScreen()
+            )
         }
     }
 }

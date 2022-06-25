@@ -83,7 +83,7 @@ class LoadingScreen(
     companion object {
         private const val PROGRESS_BAR_WIDTH = UI_WIDTH / 2f
         private const val PROGRESS_BAR_HEIGHT = 60f
-        private const val PROGRESS_BAR_X = UI_WIDTH / 2f
-        private const val PROGRESS_BAR_Y = UI_HEIGHT / 2f
+        private const val PROGRESS_BAR_X = (UI_WIDTH - PROGRESS_BAR_WIDTH) / 2f
+        private const val PROGRESS_BAR_Y = (UI_HEIGHT - PROGRESS_BAR_HEIGHT) / 2f
     }
 }
