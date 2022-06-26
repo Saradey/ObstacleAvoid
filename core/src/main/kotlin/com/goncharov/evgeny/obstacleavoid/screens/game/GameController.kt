@@ -12,11 +12,14 @@ import com.goncharov.evgeny.obstacleavoid.entity.Background
 import com.goncharov.evgeny.obstacleavoid.entity.Obstacle
 import com.goncharov.evgeny.obstacleavoid.entity.Player
 import com.goncharov.evgeny.obstacleavoid.managers.GameManager
+import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
+import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
 import com.goncharov.evgeny.obstacleavoid.util.LogDebugUtils.debug
 import kotlin.math.min
 
 class GameController(
-    assetManager: AssetManager
+    assetManager: AssetManager,
+    private val navigation: Navigation
 ) {
     val player = Player()
     val background = Background()
@@ -102,6 +105,8 @@ class GameController(
             if (isGameOver()) {
                 debug("GameController", "Game Over!!!")
                 GameManager.updateHighScore(score)
+                Thread.sleep(1000)
+                navigation.navigate(KeyNavigation.MenuKey)
             } else {
                 restart()
             }

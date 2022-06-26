@@ -69,7 +69,7 @@ class App : Game(), Navigation {
                 MenuScreen(this, assetManager, batch)
             )
             KeyNavigation.GameKey -> setScreen(
-                GameScreen(assetManager, debugRender, batch)
+                GameScreen(assetManager, debugRender, batch, this)
             )
             KeyNavigation.HighScoreKey -> setScreen(
                 HighScoreScreen(this, assetManager, batch)
