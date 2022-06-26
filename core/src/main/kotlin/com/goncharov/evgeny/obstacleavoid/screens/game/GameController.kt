@@ -116,6 +116,7 @@ class GameController(
     private fun isPlayerCollidingWithObstacle(): Boolean {
         obstacles.forEach { obstacle ->
             if (obstacle.isNotHit() && obstacle.isPlayerColliding(player)) {
+                hit.play()
                 return true
             }
         }
