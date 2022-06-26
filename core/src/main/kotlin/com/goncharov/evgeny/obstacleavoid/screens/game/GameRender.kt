@@ -102,6 +102,19 @@ class GameRender(
             gameController.obstacles.forEach { obstacle ->
                 obstacle.drawDebug(renderer)
             }
+            renderer.color = Color.WHITE
+            for (line in 0..HOW_MANY_LINES_X) {
+                renderer.line(
+                    Vector2(line.toFloat() * WIDTH_LINE, 0f),
+                    Vector2(line.toFloat() * WIDTH_LINE, WORLD_HEIGHT)
+                )
+            }
+            for (line in 0..HOW_MANY_LINES_Y) {
+                renderer.line(
+                    Vector2(0f, line.toFloat() * WIDTH_LINE),
+                    Vector2(WORLD_WIDTH, line.toFloat() * WIDTH_LINE)
+                )
+            }
             renderer.end()
         }
     }
@@ -109,5 +122,8 @@ class GameRender(
     companion object {
         private const val LIVE_TEXT = "LIVES: %d"
         private const val SCORE_TEXT = "SCORE: %d"
+        private const val WIDTH_LINE = WORLD_WIDTH / 10f
+        private const val HOW_MANY_LINES_X = (WORLD_WIDTH / WIDTH_LINE).toInt()
+        private const val HOW_MANY_LINES_Y = (WORLD_HEIGHT / WIDTH_LINE).toInt()
     }
 }
