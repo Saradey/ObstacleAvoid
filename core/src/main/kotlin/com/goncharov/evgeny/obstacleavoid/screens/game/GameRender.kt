@@ -59,22 +59,24 @@ class GameRender(
 
     private fun renderGamePlay() {
         viewport.apply()
-        batch.projectionMatrix = camera.combined
-        batch.begin()
-        val background = gameController.background
-        batch.draw(
-            backgroundRegion,
-            background.x,
-            background.y,
-            background.width,
-            background.height
-        )
-        val player = gameController.player
-        batch.draw(playerRegion, player.x, player.y, player.width, player.height)
-        gameController.obstacles.forEach { obstacle ->
-            batch.draw(obstacleRegion, obstacle.x, obstacle.y, obstacle.width, obstacle.height)
+        if (gameController.drawingSprite) {
+            batch.projectionMatrix = camera.combined
+            batch.begin()
+            val background = gameController.background
+            batch.draw(
+                backgroundRegion,
+                background.x,
+                background.y,
+                background.width,
+                background.height
+            )
+            val player = gameController.player
+            batch.draw(playerRegion, player.x, player.y, player.width, player.height)
+            gameController.obstacles.forEach { obstacle ->
+                batch.draw(obstacleRegion, obstacle.x, obstacle.y, obstacle.width, obstacle.height)
+            }
+            batch.end()
         }
-        batch.end()
     }
 
     private fun renderUi() {

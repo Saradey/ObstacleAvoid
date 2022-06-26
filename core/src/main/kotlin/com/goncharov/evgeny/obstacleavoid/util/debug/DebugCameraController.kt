@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
+import com.goncharov.evgeny.obstacleavoid.consts.WORLD_HEIGHT
+import com.goncharov.evgeny.obstacleavoid.consts.WORLD_WIDTH
 
 object DebugCameraController {
 
@@ -14,6 +16,11 @@ object DebugCameraController {
             Gdx.input.isKeyPressed(Input.Keys.RIGHT) -> camera.position.x += TRANSFORM_POSITION_SPEED_UI_CAMERA
             Gdx.input.isKeyPressed(Input.Keys.UP) -> camera.position.y += TRANSFORM_POSITION_SPEED_UI_CAMERA
             Gdx.input.isKeyPressed(Input.Keys.DOWN) -> camera.position.y -= TRANSFORM_POSITION_SPEED_UI_CAMERA
+            Gdx.input.isKeyPressed(Input.Keys.R) -> {
+                camera.position.x = UI_WIDTH / 2f
+                camera.position.y = UI_HEIGHT / 2f
+                camera.zoom = 1f
+            }
         }
         zoomControlling(camera)
     }
@@ -24,6 +31,11 @@ object DebugCameraController {
             Gdx.input.isKeyPressed(Input.Keys.RIGHT) -> camera.position.x += TRANSFORM_POSITION_SPEED_CAMERA
             Gdx.input.isKeyPressed(Input.Keys.UP) -> camera.position.y += TRANSFORM_POSITION_SPEED_CAMERA
             Gdx.input.isKeyPressed(Input.Keys.DOWN) -> camera.position.y -= TRANSFORM_POSITION_SPEED_CAMERA
+            Gdx.input.isKeyPressed(Input.Keys.R) -> {
+                camera.position.x = WORLD_WIDTH / 2f
+                camera.position.y = WORLD_HEIGHT / 2f
+                camera.zoom = 1f
+            }
         }
         zoomControlling(camera)
     }
@@ -32,11 +44,6 @@ object DebugCameraController {
         when {
             Gdx.input.isKeyPressed(Input.Keys.Z) -> camera.zoom += ZOOM_SPEED
             Gdx.input.isKeyPressed(Input.Keys.X) -> camera.zoom -= ZOOM_SPEED
-            Gdx.input.isKeyPressed(Input.Keys.R) -> {
-                camera.position.x = UI_WIDTH / 2f
-                camera.position.y = UI_HEIGHT / 2f
-                camera.zoom = 1f
-            }
         }
     }
 

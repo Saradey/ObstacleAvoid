@@ -34,6 +34,7 @@ class GameController(
     private val hit = assetManager[HIT_SOUND_DESCRIPTOR]
     private var gameIsPause = false
     var debugRender = false
+    var drawingSprite = true
 
     init {
         player.setPosition(START_PLAYER_X, START_PLAYER_Y)
@@ -43,6 +44,7 @@ class GameController(
         when (keycode) {
             Input.Keys.SPACE -> gameIsPause = !gameIsPause
             Input.Keys.C -> debugRender = !debugRender
+            Input.Keys.V -> drawingSprite = !drawingSprite
         }
         return true
     }
