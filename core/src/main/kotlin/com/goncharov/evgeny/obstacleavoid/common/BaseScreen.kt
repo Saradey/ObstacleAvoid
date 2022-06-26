@@ -34,19 +34,19 @@ abstract class BaseScreen : Screen, InputProcessor {
         )
     }
 
-    override fun keyDown(keycode: Int) = false
+    override fun keyDown(keycode: Int) = true
 
-    override fun keyUp(keycode: Int) = false
+    override fun keyUp(keycode: Int) = true
 
-    override fun keyTyped(character: Char) = false
+    override fun keyTyped(character: Char) = true
 
-    override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int) = false
+    override fun touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int) = true
 
-    override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int) = false
+    override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int) = true
 
-    override fun touchDragged(screenX: Int, screenY: Int, pointer: Int) = false
+    override fun touchDragged(screenX: Int, screenY: Int, pointer: Int) = true
 
-    override fun mouseMoved(screenX: Int, screenY: Int) = false
+    override fun mouseMoved(screenX: Int, screenY: Int) = true
 
-    override fun scrolled(amountX: Float, amountY: Float) = false
+    override fun scrolled(amountX: Float, amountY: Float) = true
 }

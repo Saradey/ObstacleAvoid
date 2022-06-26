@@ -8,18 +8,12 @@ import com.goncharov.evgeny.obstacleavoid.util.FpsMonitorManager
 class DebugUiInputController(
     private val stage: Stage,
     private val fpsMonitorManager: FpsMonitorManager
-) :
-    BaseInputProcessor() {
+) : BaseInputProcessor() {
 
     override fun keyDown(keycode: Int): Boolean {
-        when {
-            keycode == Input.Keys.C && stage.isDebugAll.not() -> {
-                stage.isDebugAll = true
-            }
-            keycode == Input.Keys.C && stage.isDebugAll -> {
-                stage.isDebugAll = false
-            }
-            keycode == Input.Keys.B -> fpsMonitorManager.updateFpsMonitor()
+        when (keycode) {
+            Input.Keys.C -> stage.isDebugAll = !stage.isDebugAll
+            Input.Keys.B -> fpsMonitorManager.updateFpsMonitor()
         }
         return true
     }

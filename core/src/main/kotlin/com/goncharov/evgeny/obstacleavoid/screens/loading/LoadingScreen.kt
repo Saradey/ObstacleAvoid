@@ -5,7 +5,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.goncharov.evgeny.obstacleavoid.common.BaseScreen
-import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors
+import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors.FONT_DESCRIPTOR
+import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors.GAME_PLAY_DESCRIPTOR
+import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors.HIT_SOUND_DESCRIPTOR
+import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors.UI_SKIN_DESCRIPTOR
 import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
@@ -26,10 +29,10 @@ class LoadingScreen(
 
     override fun show() {
         debug("show")
-        assetManager.load(AssetDescriptors.FONT_DESCRIPTOR)
-        assetManager.load(AssetDescriptors.GAME_PLAY_DESCRIPTOR)
-        assetManager.load(AssetDescriptors.UI_SKIN_DESCRIPTOR)
-        assetManager.load(AssetDescriptors.HIT_SOUND_DESCRIPTOR)
+        assetManager.load(FONT_DESCRIPTOR)
+        assetManager.load(GAME_PLAY_DESCRIPTOR)
+        assetManager.load(UI_SKIN_DESCRIPTOR)
+        assetManager.load(HIT_SOUND_DESCRIPTOR)
     }
 
     override fun render(delta: Float) {
