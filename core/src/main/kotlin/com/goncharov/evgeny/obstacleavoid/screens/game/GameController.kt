@@ -94,7 +94,7 @@ class GameController(
 
     private fun updateDisplayScore(delta: Float) {
         if (displayScore < score) {
-            displayScore = min(score, (displayScore + 40 * delta).toInt())
+            displayScore = min(score, displayScore + (60 * delta).toInt())
         }
     }
 
