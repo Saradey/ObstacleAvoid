@@ -34,7 +34,7 @@ class GameRender(
     private val obstacleRegion = gamePlayAtlas.findRegion(OBSTACLE)
     private val backgroundRegion = gamePlayAtlas.findRegion(BACKGROUND)
 
-    fun render(delta: Float) {
+    fun render() {
         DebugCameraController.updateCamera(camera)
         touchedUpdate()
         GdxUtils.clearScreen()

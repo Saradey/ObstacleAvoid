@@ -30,7 +30,7 @@ class GameScreen(
     override fun render(delta: Float) {
         GdxUtils.clearScreen()
         gameController.update(delta)
-        gameRender.render(delta)
+        gameRender.render()
     }
 
     override fun resize(width: Int, height: Int) {

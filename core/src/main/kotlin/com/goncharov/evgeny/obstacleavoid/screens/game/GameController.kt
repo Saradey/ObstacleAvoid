@@ -37,6 +37,7 @@ class GameController(
     var gameIsPause = false
     var debugRender = false
     var drawingSprite = true
+    private var isOverTime = 0f
 
     init {
         player.setPosition(START_PLAYER_X, START_PLAYER_Y)
@@ -53,7 +54,13 @@ class GameController(
     }
 
     fun update(delta: Float) {
-        if (isGameOver() || gameIsPause) return
+        if (isGameOver()) {
+            isOverTime += delta
+            if (isOverTime > 1f) {
+                navigation.navigate(KeyNavigation.MenuKey)
+            }
+        }
+        if (gameIsPause || isGameOver()) return
         updatePlayer()
         updateObstacles(delta)
         updateScore(delta)
@@ -121,8 +128,6 @@ class GameController(
             if (isGameOver()) {
                 debug("GameController", "Game Over!!!")
                 GameManager.updateHighScore(score)
-                Thread.sleep(1000)
-                navigation.navigate(KeyNavigation.MenuKey)
             } else {
                 restart()
             }
