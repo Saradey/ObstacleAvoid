@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Pools
 import com.goncharov.evgeny.obstacleavoid.consts.*
 import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors.HIT_SOUND_DESCRIPTOR
+import com.goncharov.evgeny.obstacleavoid.entity.Background
 import com.goncharov.evgeny.obstacleavoid.entity.Obstacle
 import com.goncharov.evgeny.obstacleavoid.entity.Player
 import com.goncharov.evgeny.obstacleavoid.managers.GameManager
@@ -17,13 +18,14 @@ import kotlin.math.min
 class GameController(
     private val assetManager: AssetManager
 ) {
-    private val player = Player()
-    private val obstacles = Array<Obstacle>()
+    val player = Player()
+    val background = Background()
+    val obstacles = Array<Obstacle>()
     private var obstacleTimer = 0f
     private var scoreTimer = 0f
-    private var lives = LIVES_START
+    var lives = LIVES_START
     private var score = 0
-    private var displayScore = 0
+    var displayScore = 0
     private val obstaclePool = Pools.get(Obstacle::class.java, 40)
     private val hit = assetManager[HIT_SOUND_DESCRIPTOR]
 
@@ -120,5 +122,5 @@ class GameController(
         player.setPosition(START_PLAYER_X, START_PLAYER_Y)
     }
 
-    private fun isGameOver() = lives <= 0
+    fun isGameOver() = lives <= 0
 }
