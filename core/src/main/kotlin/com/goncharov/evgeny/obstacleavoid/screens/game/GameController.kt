@@ -46,10 +46,10 @@ class GameController(
         var playerX = player.x
         when {
             Gdx.input.isKeyPressed(Input.Keys.A) -> {
-                playerX += MAX_PLAYER_X_SPEED
+                playerX -= MAX_PLAYER_X_SPEED
             }
             Gdx.input.isKeyPressed(Input.Keys.D) -> {
-                playerX -= MAX_PLAYER_X_SPEED
+                playerX += MAX_PLAYER_X_SPEED
             }
         }
         player.x = MathUtils.clamp(playerX, 0f, WORLD_WIDTH - player.width)
