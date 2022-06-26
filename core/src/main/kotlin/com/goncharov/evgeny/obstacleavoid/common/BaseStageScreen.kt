@@ -44,7 +44,7 @@ abstract class BaseStageScreen(
     }
 
     override fun render(delta: Float) {
-        DebugCameraController.update(camera)
+        DebugCameraController.updateCameraUi(camera)
         GdxUtils.clearScreen()
         stage.act()
         stage.draw()
@@ -58,6 +58,7 @@ abstract class BaseStageScreen(
     override fun dispose() {
         debug("dispose")
         stage.dispose()
+        Gdx.input.inputProcessor = null
     }
 
     protected abstract fun initUi(): Actor
