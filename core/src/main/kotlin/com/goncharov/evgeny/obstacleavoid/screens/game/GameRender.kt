@@ -47,10 +47,9 @@ class GameRender(
     }
 
     private fun touchedUpdate() {
-        if (Gdx.input.isTouched && gameController.isGameOver()) {
+        if (Gdx.input.isTouched && gameController.isGameOver().not()) {
             val worldTouch =
                 viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
-            debug("GameRender", "screenTouch x=%f y=%f".format(worldTouch.x, worldTouch.y))
             gameController.player.x =
                 MathUtils.clamp(worldTouch.x, 0f, WORLD_WIDTH - gameController.player.width)
         }
