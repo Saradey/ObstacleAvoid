@@ -33,7 +33,7 @@ class GameController(
     private val obstaclePool = Pools.get(Obstacle::class.java, 40)
     private val hit = assetManager[HIT_SOUND_DESCRIPTOR]
     private var gameIsPause = false
-    private var debugRender = false
+    var debugRender = false
 
     init {
         player.setPosition(START_PLAYER_X, START_PLAYER_Y)

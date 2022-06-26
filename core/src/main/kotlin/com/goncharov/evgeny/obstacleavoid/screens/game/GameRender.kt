@@ -91,15 +91,17 @@ class GameRender(
     }
 
     private fun renderDebug() {
-        renderer.color = Color.RED
-        viewport.apply()
-        renderer.projectionMatrix = camera.combined
-        renderer.begin(ShapeRenderer.ShapeType.Line)
-        gameController.player.drawDebug(renderer)
-        gameController.obstacles.forEach { obstacle ->
-            obstacle.drawDebug(renderer)
+        if (gameController.debugRender) {
+            renderer.color = Color.RED
+            viewport.apply()
+            renderer.projectionMatrix = camera.combined
+            renderer.begin(ShapeRenderer.ShapeType.Line)
+            gameController.player.drawDebug(renderer)
+            gameController.obstacles.forEach { obstacle ->
+                obstacle.drawDebug(renderer)
+            }
+            renderer.end()
         }
-        renderer.end()
     }
 
     companion object {
