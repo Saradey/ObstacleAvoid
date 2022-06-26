@@ -22,7 +22,6 @@ class GameRender(
     private val gameController: GameController,
     private val batch: SpriteBatch
 ) {
-
     private val camera = OrthographicCamera()
     private val viewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT, camera)
     private val uiCamera = OrthographicCamera()
@@ -85,10 +84,21 @@ class GameRender(
         batch.begin()
         val liveText = LIVE_TEXT.format(gameController.lives)
         layout.setText(font, liveText)
+        font.color = Color.WHITE
         font.draw(batch, liveText, 20f, UI_HEIGHT - layout.height)
         val scoreText = SCORE_TEXT.format(gameController.displayScore)
         layout.setText(font, scoreText)
         font.draw(batch, scoreText, UI_WIDTH - layout.width - 20f, UI_HEIGHT - layout.height)
+        if (gameController.isGameOver()) {
+            layout.setText(font, OVER_GAME_TEXT)
+            font.color = Color.RED
+            font.draw(
+                batch,
+                OVER_GAME_TEXT,
+                (UI_WIDTH - layout.width) / 2f,
+                (UI_HEIGHT - layout.height) / 2f
+            )
+        }
         batch.end()
     }
 
@@ -122,6 +132,7 @@ class GameRender(
     companion object {
         private const val LIVE_TEXT = "LIVES: %d"
         private const val SCORE_TEXT = "SCORE: %d"
+        private const val OVER_GAME_TEXT = "GAME OVER"
         private const val WIDTH_LINE = WORLD_WIDTH / 10f
         private const val HOW_MANY_LINES_X = (WORLD_WIDTH / WIDTH_LINE).toInt()
         private const val HOW_MANY_LINES_Y = (WORLD_HEIGHT / WIDTH_LINE).toInt()

@@ -56,7 +56,7 @@ class GameController(
     fun update(delta: Float) {
         if (isGameOver()) {
             isOverTime += delta
-            if (isOverTime > 1f) {
+            if (isOverTime > 2f) {
                 navigation.navigate(KeyNavigation.MenuKey)
             }
         }
