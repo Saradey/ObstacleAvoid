@@ -3,6 +3,7 @@ package com.goncharov.evgeny.obstacleavoid.entity
 import com.badlogic.gdx.math.Intersector
 import com.badlogic.gdx.utils.Pool
 import com.goncharov.evgeny.obstacleavoid.consts.MEDIUM_OBSTACLE_SPEED
+import com.goncharov.evgeny.obstacleavoid.consts.OBSTACLE_BOUNDS_RADIUS
 import com.goncharov.evgeny.obstacleavoid.consts.OBSTACLE_SIZE
 
 class Obstacle : GameObjectBase(), Pool.Poolable {
@@ -12,6 +13,7 @@ class Obstacle : GameObjectBase(), Pool.Poolable {
 
     init {
         setSize(OBSTACLE_SIZE, OBSTACLE_SIZE)
+        bounds.setRadius(OBSTACLE_BOUNDS_RADIUS)
     }
 
     fun update() {

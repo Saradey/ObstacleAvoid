@@ -30,7 +30,7 @@ object DebugDrawingFps {
             batch,
             FPS.format(Gdx.graphics.framesPerSecond),
             UI_WIDTH - 110f,
-            UI_HEIGHT - 20f
+            UI_HEIGHT - 40f
         )
         batch.end()
     }

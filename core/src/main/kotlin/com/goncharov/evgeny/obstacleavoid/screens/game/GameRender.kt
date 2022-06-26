@@ -2,6 +2,7 @@ package com.goncharov.evgeny.obstacleavoid.screens.game
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.GlyphLayout
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
@@ -17,7 +18,7 @@ import com.goncharov.evgeny.obstacleavoid.util.LogDebugUtils.debug
 
 class GameRender(
     private val renderer: ShapeRenderer,
-    private val assetManager: AssetManager,
+    assetManager: AssetManager,
     private val gameController: GameController,
     private val batch: SpriteBatch
 ) {
@@ -89,6 +90,7 @@ class GameRender(
     }
 
     private fun renderDebug() {
+        renderer.color = Color.RED
         viewport.apply()
         renderer.projectionMatrix = camera.combined
         renderer.begin(ShapeRenderer.ShapeType.Line)

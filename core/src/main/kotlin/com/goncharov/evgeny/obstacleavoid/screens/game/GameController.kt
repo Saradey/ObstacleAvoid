@@ -16,7 +16,7 @@ import com.goncharov.evgeny.obstacleavoid.util.LogDebugUtils.debug
 import kotlin.math.min
 
 class GameController(
-    private val assetManager: AssetManager
+    assetManager: AssetManager
 ) {
     val player = Player()
     val background = Background()
@@ -110,8 +110,9 @@ class GameController(
 
     private fun isPlayerCollidingWithObstacle(): Boolean {
         obstacles.forEach { obstacle ->
-            if (obstacle.isNotHit() && obstacle.isPlayerColliding(player))
+            if (obstacle.isNotHit() && obstacle.isPlayerColliding(player)) {
                 return true
+            }
         }
         return false
     }
