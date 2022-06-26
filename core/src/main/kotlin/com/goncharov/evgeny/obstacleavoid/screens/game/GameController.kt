@@ -6,6 +6,7 @@ import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Pools
+import com.goncharov.evgeny.obstacleavoid.common.BaseInputProcessor
 import com.goncharov.evgeny.obstacleavoid.consts.*
 import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors.HIT_SOUND_DESCRIPTOR
 import com.goncharov.evgeny.obstacleavoid.entity.Background
@@ -20,7 +21,7 @@ import kotlin.math.min
 class GameController(
     assetManager: AssetManager,
     private val navigation: Navigation
-) {
+) : BaseInputProcessor() {
     val player = Player()
     val background = Background()
     val obstacles = Array<Obstacle>()
@@ -31,13 +32,23 @@ class GameController(
     var displayScore = 0
     private val obstaclePool = Pools.get(Obstacle::class.java, 40)
     private val hit = assetManager[HIT_SOUND_DESCRIPTOR]
+    private var gameIsPause = false
+    private var debugRender = false
 
     init {
         player.setPosition(START_PLAYER_X, START_PLAYER_Y)
     }
 
+    override fun keyUp(keycode: Int): Boolean {
+        when (keycode) {
+            Input.Keys.SPACE -> gameIsPause = !gameIsPause
+            Input.Keys.C -> debugRender = !debugRender
+        }
+        return true
+    }
+
     fun update(delta: Float) {
-        if (isGameOver()) return
+        if (isGameOver() || gameIsPause) return
         updatePlayer()
         updateObstacles(delta)
         updateScore(delta)

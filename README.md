@@ -6,3 +6,4 @@ z - zoom out camera
 x - zoom in camera
 c - show debug grid
 r - reset camera position
+space - game pause

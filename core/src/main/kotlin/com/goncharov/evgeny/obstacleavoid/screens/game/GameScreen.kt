@@ -1,5 +1,6 @@
 package com.goncharov.evgeny.obstacleavoid.screens.game
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
@@ -21,6 +22,7 @@ class GameScreen(
 
     override fun show() {
         debug("show")
+        Gdx.input.inputProcessor = gameController
     }
 
     override fun render(delta: Float) {
@@ -32,5 +34,9 @@ class GameScreen(
     override fun resize(width: Int, height: Int) {
         debug("resize")
         gameRender.resize(width, height)
+    }
+
+    override fun dispose() {
+        Gdx.input.inputProcessor = null
     }
 }
