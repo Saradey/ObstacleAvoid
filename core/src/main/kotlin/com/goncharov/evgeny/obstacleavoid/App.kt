@@ -15,9 +15,10 @@ import com.goncharov.evgeny.obstacleavoid.screens.menu.HighScoreScreen
 import com.goncharov.evgeny.obstacleavoid.screens.menu.MenuScreen
 import com.goncharov.evgeny.obstacleavoid.screens.menu.OptionsScreen
 import com.goncharov.evgeny.obstacleavoid.util.FormatUtils
+import com.goncharov.evgeny.obstacleavoid.util.FpsMonitorManager
 import com.goncharov.evgeny.obstacleavoid.util.debug.DebugDrawingFps
 
-class App : Game(), Navigation {
+class App : Game(), Navigation, FpsMonitorManager {
 
     private val batch by lazy {
         SpriteBatch()
@@ -28,6 +29,7 @@ class App : Game(), Navigation {
     private val debugRender by lazy {
         ShapeRenderer()
     }
+    private var drawingFps = false
 
     override fun create() {
         assetManager.load(AssetDescriptors.FPS_FONT_DESCRIPTOR)
@@ -42,7 +44,12 @@ class App : Game(), Navigation {
 
     override fun render() {
         super.render()
-        DebugDrawingFps.drawFpsMonitor(batch, assetManager[AssetDescriptors.FPS_FONT_DESCRIPTOR])
+        if (drawingFps) {
+            DebugDrawingFps.drawFpsMonitor(
+                batch,
+                assetManager[AssetDescriptors.FPS_FONT_DESCRIPTOR]
+            )
+        }
     }
 
     override fun resize(width: Int, height: Int) {
@@ -66,17 +73,21 @@ class App : Game(), Navigation {
                 LoadingScreen(assetManager, debugRender, this)
             )
             KeyNavigation.MenuKey -> setScreen(
-                MenuScreen(this, assetManager, batch)
+                MenuScreen(this, assetManager, batch, this)
             )
             KeyNavigation.GameKey -> setScreen(
-                GameScreen(assetManager, debugRender, batch, this)
+                GameScreen(assetManager, debugRender, batch, this, this)
             )
             KeyNavigation.HighScoreKey -> setScreen(
-                HighScoreScreen(this, assetManager, batch)
+                HighScoreScreen(this, assetManager, batch, this)
             )
             KeyNavigation.OptionsKey -> setScreen(
-                OptionsScreen(this, assetManager, batch)
+                OptionsScreen(this, assetManager, batch, this)
             )
         }
+    }
+
+    override fun updateFpsMonitor() {
+        drawingFps = !drawingFps
     }
 }

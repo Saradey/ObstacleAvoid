@@ -15,12 +15,14 @@ import com.goncharov.evgeny.obstacleavoid.entity.Player
 import com.goncharov.evgeny.obstacleavoid.managers.GameManager
 import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
+import com.goncharov.evgeny.obstacleavoid.util.FpsMonitorManager
 import com.goncharov.evgeny.obstacleavoid.util.LogDebugUtils.debug
 import kotlin.math.min
 
 class GameController(
     assetManager: AssetManager,
-    private val navigation: Navigation
+    private val navigation: Navigation,
+    private val fpsMonitorManager: FpsMonitorManager
 ) : BaseInputProcessor() {
     val player = Player()
     val background = Background()
@@ -45,6 +47,7 @@ class GameController(
             Input.Keys.SPACE -> gameIsPause = !gameIsPause
             Input.Keys.C -> debugRender = !debugRender
             Input.Keys.V -> drawingSprite = !drawingSprite
+            Input.Keys.B -> fpsMonitorManager.updateFpsMonitor()
         }
         return true
     }

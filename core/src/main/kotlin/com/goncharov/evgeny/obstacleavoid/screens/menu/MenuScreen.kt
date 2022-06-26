@@ -14,12 +14,14 @@ import com.goncharov.evgeny.obstacleavoid.consts.BACKGROUND
 import com.goncharov.evgeny.obstacleavoid.consts.PANEL
 import com.goncharov.evgeny.obstacleavoid.navigation.KeyNavigation
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
+import com.goncharov.evgeny.obstacleavoid.util.FpsMonitorManager
 
 class MenuScreen(
     navigation: Navigation,
     assetManager: AssetManager,
-    batch: SpriteBatch
-) : BaseStageScreen(navigation, assetManager, batch) {
+    batch: SpriteBatch,
+    fpsMonitorManager: FpsMonitorManager
+) : BaseStageScreen(navigation, assetManager, batch, fpsMonitorManager) {
 
     override fun initUi(): Actor {
         val table = Table()

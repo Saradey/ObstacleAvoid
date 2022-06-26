@@ -8,3 +8,4 @@ c - show debug grid
 r - reset camera position
 space - game pause
 v - drawing sprite or not
+b - draw fps monitor, or not

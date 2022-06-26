@@ -13,6 +13,7 @@ import com.goncharov.evgeny.obstacleavoid.consts.AssetDescriptors
 import com.goncharov.evgeny.obstacleavoid.consts.UI_HEIGHT
 import com.goncharov.evgeny.obstacleavoid.consts.UI_WIDTH
 import com.goncharov.evgeny.obstacleavoid.navigation.Navigation
+import com.goncharov.evgeny.obstacleavoid.util.FpsMonitorManager
 import com.goncharov.evgeny.obstacleavoid.util.GdxUtils
 import com.goncharov.evgeny.obstacleavoid.util.debug.DebugCameraController
 import com.goncharov.evgeny.obstacleavoid.util.debug.DebugUiInputController
@@ -20,14 +21,15 @@ import com.goncharov.evgeny.obstacleavoid.util.debug.DebugUiInputController
 abstract class BaseStageScreen(
     protected val navigation: Navigation,
     protected val assetManager: AssetManager,
-    private val batch: SpriteBatch
+    private val batch: SpriteBatch,
+    fpsMonitorManager: FpsMonitorManager
 ) : BaseScreen() {
 
     private val camera = OrthographicCamera()
     private val viewport = FitViewport(UI_WIDTH, UI_HEIGHT, camera)
     private val stage = Stage(viewport, batch)
     protected val uiSkin: Skin = assetManager[AssetDescriptors.UI_SKIN_DESCRIPTOR]
-    private val debugController = DebugUiInputController(stage)
+    private val debugController = DebugUiInputController(stage, fpsMonitorManager)
 
     override fun show() {
         debug("show")
