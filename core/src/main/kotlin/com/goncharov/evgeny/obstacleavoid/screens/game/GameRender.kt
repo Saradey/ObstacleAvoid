@@ -49,7 +49,7 @@ class GameRender(
     }
 
     private fun touchedUpdate() {
-        if (Gdx.input.isTouched && gameController.isGameOver().not()) {
+        if (Gdx.input.isTouched && !gameController.isGameOver() && !gameController.gameIsPause) {
             val worldTouch =
                 viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
             gameController.player.x =

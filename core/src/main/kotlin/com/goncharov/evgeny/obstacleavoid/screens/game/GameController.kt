@@ -34,7 +34,7 @@ class GameController(
     var displayScore = 0
     private val obstaclePool = Pools.get(Obstacle::class.java, 40)
     private val hit = assetManager[HIT_SOUND_DESCRIPTOR]
-    private var gameIsPause = false
+    var gameIsPause = false
     var debugRender = false
     var drawingSprite = true
 
