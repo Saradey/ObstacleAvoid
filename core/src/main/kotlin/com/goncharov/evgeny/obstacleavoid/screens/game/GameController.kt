@@ -64,7 +64,7 @@ class GameController(
             val min = 0f
             val max = WORLD_WIDTH - OBSTACLE_SIZE
             val obstacleX = MathUtils.random(min, max)
-            val obstacleY = WORLD_WIDTH
+            val obstacleY = WORLD_HEIGHT
             val obstacle = obstaclePool.obtain()
             val difficultyLevel = GameManager.getDifficultyLevel()
             obstacle.ySpeed = difficultyLevel.obstacleSpeed
